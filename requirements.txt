@@ -1,1 +1,7 @@
-
+fastapi
+uvicorn[standard]
+requests
+python-multipart
+streamlit
+pydantic
+fuzzywuzzy[speedup]
