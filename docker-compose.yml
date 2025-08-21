@@ -1,1 +1,40 @@
+version: '3.8'
+services:
+image_ingestion:
+build: ./services/image_ingestion
+ports:
+- "8000:80"
+environment:
+- OCR_URL=http://ocr_service:80/ocr
+depends_on:
+- ocr_service
 
+
+ocr_service:
+build: ./services/ocr_service
+ports:
+- "8001:80"
+
+
+validation_service:
+build: ./services/validation_service
+ports:
+- "8002:80"
+volumes:
+- ./db:/app/db:ro
+
+
+classification_service:
+build: ./services/classification_service
+ports:
+- "8003:80"
+
+
+dashboard:
+build: ./dashboard
+ports:
+- "8501:8501"
+depends_on:
+- image_ingestion
+- validation_service
+- classification_service
