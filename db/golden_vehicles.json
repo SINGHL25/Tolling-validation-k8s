@@ -1,1 +1,4 @@
-
+[
+{"plate":"ABC123","owner":"Fleet A","type":"truck","notes":"high priority"},
+{"plate":"XYZ999","owner":"VIP","type":"car","notes":"gold"}
+]
